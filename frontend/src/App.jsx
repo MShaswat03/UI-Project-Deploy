@@ -5,34 +5,76 @@ import EventPage from "./components/views/EventPage";
 import InternshipPage from "./components/views/InternshipPage";
 import ClubPage from "./components/views/ClubPage";
 import RightSideBar from "./components/bars/RightSideBar";
-import { useState } from "react";
-import ClubData from "./assets/ClubData.json"
-import EventData from "./assets/EventData.json"
-import InternshipData from "./assets/EventData.json"
+import { useEffect, useState } from "react";
+import ClubData from "./assets/ClubData.json";
+import EventData from "./assets/EventData.json";
 import InternshipDetails from "./components/views/InternshipDetails";
-import EventDetails from "./components/views/EventDetails"
+import EventDetails from "./components/views/EventDetails";
 import ClubDetails from "./components/views/ClubDetails";
+
 export default function App() {
-  
-  const [joinedClubs, setjoinedClujbs] = useState([])
+  const [appliedInternships, setAppliedInternships] = useState([]) //havent implemented backend for this yet, stored on frontend
+  const [savedInternships, setSavedInternships] = useState([]);
+  const [joinedClubs, setJoinedClubs] = useState([])
   const [registeredEvents, setRegisteredEvents] = useState([])
-  const [appliedInternships, setappliedInternships] = useState([])
+
+
+  useEffect(() => {
+    const loadSavedInternships = async () => {
+      try {
+        const res = await fetch("http://localhost:8000/myinternships");
+        console.log(res)
+        const myinternships = await res.json();
+        setSavedInternships(myinternships)
+        console.log(myinternships)
+      } catch (e) {
+        console.error(`failed to retrieve my internships: ${e}`);
+      }
+    };
+    const loadJoinedClubs = async () => {
+      try {
+        const res = await fetch("http://localhost:8000/myclubs");
+        console.log(res)
+        const myclubs = await res.json();
+        setJoinedClubs(myclubs)
+        console.log(myclubs)
+      } catch (e) {
+        console.error(`failed to retrieve my clubs: ${e}`);
+      }
+    };
+    const loadRegisteredEvents = async () => {
+      try {
+        const res = await fetch("http://localhost:8000/myevents");
+        console.log(res)
+        const myevents = await res.json();
+        setRegisteredEvents(myevents)
+        console.log(myevents)
+      } catch (e) {
+        console.error(`failed to retrieve my events: ${e}`);
+      }
+    };
+    loadSavedInternships();
+    loadJoinedClubs();
+    loadRegisteredEvents();
+  },[])
 
   return (
     <>
-    <div className="hub-container">
-      <RightSideBar/>
-      <Routes>
-        <Route path='/clubs/:id' element={<ClubDetails/>}></Route>
-        <Route path='/events/:id' element={<EventDetails/>}></Route>
-        <Route path='/internships/:id' element={<InternshipDetails/>}></Route>
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/events" element={<EventPage data={EventData} />} />
-        <Route path="/internships" element={<InternshipPage />} />
-        <Route path="/clubs" element={<ClubPage />} />
-      </Routes>
-    </div>
-  
-  </>
-  )
+      <div className="hub-container">
+        <RightSideBar />
+        <Routes>
+          <Route path="/clubs/:id" element={<ClubDetails joinedClubs={joinedClubs} setJoinedClubs={setJoinedClubs}/>}></Route>
+          <Route path="/events/:id" element={<EventDetails registeredEvents={registeredEvents} setRegisteredEvents={setRegisteredEvents} />}></Route>
+          <Route
+            path="/internships/:id"
+            element={<InternshipDetails savedInternships={savedInternships} setSavedInternships={setSavedInternships} appliedInternships={appliedInternships} setAppliedInternships={setAppliedInternships}/>}
+          ></Route>
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/events" element={<EventPage data={EventData} />} />
+          <Route path="/internships" element={<InternshipPage />} />
+          <Route path="/clubs" element={<ClubPage />} />
+        </Routes>
+      </div>
+    </>
+  );
 }

@@ -1,12 +1,42 @@
 import { useParams } from "react-router-dom";
 import Internships from "../../assets/InternshipData.json";
 import Image from "../cards/Image";
-import Button from "../buttons/Button";
+import ApplyButton from "../buttons/ApplyButton";
+import SaveButton from "../buttons/SaveButton";
 
-export default function InternshipDetails() {
+export default function InternshipDetails({savedInternships, setSavedInternships, appliedInternships, setAppliedInternships}) {
   const { id } = useParams();
   const internship = Internships.find((internship) => internship.id == id);
 
+  const isApplied = appliedInternships.some((internship) => internship.id == id)
+  const isSaved = savedInternships.some((internship) => internship.id == id)
+
+   const handleSaveToggle = async () => {
+    if (isSaved) {
+      // remove from joined list
+      setSavedInternships(savedInternships.filter((c) => c.id !== id));
+
+      const unSaveInternship = async () => {
+        await fetch(`http://localhost:8000/myinternships/${id}`, {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+        });
+      };
+      unSaveInternship();
+    } else {
+      // add to joined list
+      setSavedInternships([...savedInternships, internship]);
+
+      const saveInternship = async () => {
+        await fetch("http://localhost:8000/myinternships", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(internship),
+        });
+      };
+      saveInternship();
+    }
+  }
   return (
     <div className="details-container">
       <div className="header">
@@ -48,13 +78,17 @@ export default function InternshipDetails() {
           </div>
         </div>
       </div>
-      <Button text="Apply Now" />
-      <button style={{ backgroundColor: "gray" }}>
-        <div className="save-internship">
-            <span class="material-symbols-outlined">bookmark</span>
-            Save
-        </div>
-      </button>
+
+      <ApplyButton text={isApplied ? "Applied" : "Apply"}
+        icon={isApplied ? "check_circle" : null}
+        internship={internship}
+        setAppliedInternships={setAppliedInternships}
+        isApplied={isApplied}/>
+      <SaveButton
+        text={isSaved ? "Saved" : "Save"}
+        icon={isSaved ? "check_circle" : null}
+        onClick={handleSaveToggle}
+      />
     </div>
   );
 }

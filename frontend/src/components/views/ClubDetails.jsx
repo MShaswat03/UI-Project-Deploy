@@ -1,12 +1,38 @@
 import { useParams } from "react-router-dom";
 import clubs from "../../assets/ClubData.json";
 import Image from "../cards/Image";
-import Button from "../buttons/Button"
+import Button from "../buttons/ApplyButton";
+import JoinButton from "../buttons/JoinButton";
 
-export default function ClubDetails() {
+export default function ClubDetails({ joinedClubs, setJoinedClubs }) {
   const { id } = useParams();
   const club = clubs.find((club) => club.id == id);
+  const isJoined = joinedClubs.some((club) => club.id == id);
 
+  const handleJoinToggle = async () => {
+    if (isJoined) {
+      // remove from joined list
+      setJoinedClubs(joinedClubs.filter((c) => c.id !== id));
+      const leaveClub = async () => {
+        await fetch(`http://localhost:8000/myclubs/${id}`, {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+        });
+      };
+      leaveClub();
+    } else {
+      // add to joined list
+      setJoinedClubs([...joinedClubs, club]);
+      const joinClub = async () => {
+        await fetch("http://localhost:8000/myclubs", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(club),
+        });
+      };
+      joinClub();
+    }
+  };
   return (
     <div className="details-container">
       <div className="header">
@@ -35,7 +61,11 @@ export default function ClubDetails() {
           <span className="material-symbols-outlined">local_atm</span>
           <span>Salary {club.salary}</span>
         </div>
-        <Button text="Join" />
+        <JoinButton
+          text={isJoined ? "Joined" : "Join"}
+          icon={isJoined ? "check_circle" : null}
+          onClick={handleJoinToggle}
+        />
       </div>
     </div>
   );

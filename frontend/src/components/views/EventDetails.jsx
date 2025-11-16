@@ -1,11 +1,20 @@
 import { useParams } from "react-router-dom";
 import events from "../../assets/EventData.json";
 import Image from "../cards/Image";
-import Button from "../buttons/Button"
+import RegisterButton from "../buttons/RegisterButton";
+import { useState } from "react";
 
-export default function EventDetails() {
+export default function EventDetails({ registeredEvents, setRegisteredEvents }) {
   const { id } = useParams();
   const event = events.find((event) => event.id == id);
+  const isRegistered = registeredEvents.some((event) => event.id == id);
+
+
+  const handleRegisterToggle = async () => {
+    if (isRegistered) {
+      alert("you have already applied");
+    }
+  };
 
   return (
     <div className="details-container">
@@ -22,7 +31,13 @@ export default function EventDetails() {
           </div>
         </div>
       </div>
-      <Button text="Register" />
+      <RegisterButton
+        text={isRegistered ? "Registered" : "Register"}
+        icon={isRegistered ? "check_circle" : null}
+        onClick={handleRegisterToggle}
+        event={event}
+        setRegisteredEvents={setRegisteredEvents}
+      />
     </div>
   );
 }

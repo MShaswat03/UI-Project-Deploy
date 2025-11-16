@@ -1,16 +1,16 @@
 import RightSideBar from "../bars/RightSideBar";
 import Dashboard from "../sections/Dashboard";
 import Recommended from "../sections/Recommended";
-import UpcomingEvents from "../sections/UpcomingEvents";
+
 import "./Homepage.css";
 
 
-export default function HomePage({data}) {
+export default function HomePage({joinedClubs, registeredEvents, savedInternships}) {
 
 
   return (  
     <div className="grid-container">
-      <UpcomingEvents />
+      <Dashboard joinedClubs={joinedClubs} registeredEvents={registeredEvents} savedInternships={savedInternships}/>
     </div>
   );
 }

@@ -14,21 +14,29 @@ export default function ClubDetails({ joinedClubs, setJoinedClubs }) {
       // remove from joined list
       setJoinedClubs(joinedClubs.filter((c) => c.id !== id));
       const leaveClub = async () => {
-        await fetch(`http://localhost:8000/myclubs/${id}`, {
-          method: "DELETE",
-          headers: { "Content-Type": "application/json" },
-        });
+        try {
+          await fetch(`http://localhost:8000/myclubs/${id}`, {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+          });
+        } catch (e) {
+          console.error(e);
+        }
       };
       leaveClub();
     } else {
       // add to joined list
       setJoinedClubs([...joinedClubs, club]);
       const joinClub = async () => {
-        await fetch("http://localhost:8000/myclubs", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(club),
-        });
+        try {
+          await fetch("http://localhost:8000/myclubs", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(club),
+          });
+        } catch (e) {
+          console.error(e);
+        }
       };
       joinClub();
     }
@@ -47,26 +55,26 @@ export default function ClubDetails({ joinedClubs, setJoinedClubs }) {
             {club.description}
           </div>
         </div>
-        <div className="info-wrapper">
-          <span className="material-symbols-outlined">calendar_today</span>
-          <span>{club.date}</span>
-          <span className="material-symbols-outlined">
-            nest_clock_farsight_analog
-          </span>
-          <span>{club.time}</span>
-          <span className="material-symbols-outlined">location_on</span>
-          <span>{club.location}</span>
-          <span className="material-symbols-outlined">group</span>
-          <span>{club.spots} spots</span>
-          <span className="material-symbols-outlined">local_atm</span>
-          <span>Salary {club.salary}</span>
-        </div>
-        <JoinButton
-          text={isJoined ? "Joined" : "Join"}
-          icon={isJoined ? "check_circle" : null}
-          onClick={handleJoinToggle}
-        />
       </div>
+      <div className="info-wrapper">
+        <span className="material-symbols-outlined">calendar_today</span>
+        <span>{club.date}</span>
+        <span className="material-symbols-outlined">
+          nest_clock_farsight_analog
+        </span>
+        <span>{club.time}</span>
+        <span className="material-symbols-outlined">location_on</span>
+        <span>{club.location}</span>
+        <span className="material-symbols-outlined">group</span>
+        <span>{club.spots} spots</span>
+        <span className="material-symbols-outlined">local_atm</span>
+        <span>Salary {club.salary}</span>
+      </div>
+      <JoinButton
+        text={isJoined ? "Joined" : "Join"}
+        icon={isJoined ? "check_circle" : null}
+        onClick={handleJoinToggle}
+      />
     </div>
   );
 }

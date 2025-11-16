@@ -6,6 +6,7 @@ export default function ApplyButton({ text, icon, internship, setAppliedInternsh
   const handleClick = () => {
     if(isApplied){
       alert("you have already applied for this internship")
+      return
     }
     // 1. Open Google form
     window.open(

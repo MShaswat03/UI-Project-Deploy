@@ -4,14 +4,21 @@ import Image from "../cards/Image";
 import ApplyButton from "../buttons/ApplyButton";
 import SaveButton from "../buttons/SaveButton";
 
-export default function InternshipDetails({savedInternships, setSavedInternships, appliedInternships, setAppliedInternships}) {
+export default function InternshipDetails({
+  savedInternships,
+  setSavedInternships,
+  appliedInternships,
+  setAppliedInternships,
+}) {
   const { id } = useParams();
   const internship = Internships.find((internship) => internship.id == id);
 
-  const isApplied = appliedInternships.some((internship) => internship.id == id)
-  const isSaved = savedInternships.some((internship) => internship.id == id)
+  const isApplied = appliedInternships.some(
+    (internship) => internship.id == id
+  );
+  const isSaved = savedInternships.some((internship) => internship.id == id);
 
-   const handleSaveToggle = async () => {
+  const handleSaveToggle = async () => {
     if (isSaved) {
       // remove from joined list
       setSavedInternships(savedInternships.filter((c) => c.id !== id));
@@ -28,15 +35,19 @@ export default function InternshipDetails({savedInternships, setSavedInternships
       setSavedInternships([...savedInternships, internship]);
 
       const saveInternship = async () => {
-        await fetch("http://localhost:8000/myinternships", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(internship),
-        });
+        try {
+          await fetch("http://localhost:8000/myinternships", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(internship),
+          });
+        } catch (e) {
+          console.error(e);
+        }
       };
       saveInternship();
     }
-  }
+  };
   return (
     <div className="details-container">
       <div className="header">
@@ -79,11 +90,13 @@ export default function InternshipDetails({savedInternships, setSavedInternships
         </div>
       </div>
 
-      <ApplyButton text={isApplied ? "Applied" : "Apply"}
+      <ApplyButton
+        text={isApplied ? "Applied" : "Apply"}
         icon={isApplied ? "check_circle" : null}
         internship={internship}
         setAppliedInternships={setAppliedInternships}
-        isApplied={isApplied}/>
+        isApplied={isApplied}
+      />
       <SaveButton
         text={isSaved ? "Saved" : "Save"}
         icon={isSaved ? "check_circle" : null}

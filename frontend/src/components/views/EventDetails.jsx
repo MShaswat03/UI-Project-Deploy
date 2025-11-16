@@ -34,7 +34,7 @@ export default function EventDetails({ registeredEvents, setRegisteredEvents }) 
       <RegisterButton
         text={isRegistered ? "Registered" : "Register"}
         icon={isRegistered ? "check_circle" : null}
-        onClick={handleRegisterToggle}
+        isRegistered={isRegistered}
         event={event}
         setRegisteredEvents={setRegisteredEvents}
       />

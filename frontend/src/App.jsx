@@ -11,6 +11,10 @@ import EventData from "./assets/EventData.json";
 import InternshipDetails from "./components/views/InternshipDetails";
 import EventDetails from "./components/views/EventDetails";
 import ClubDetails from "./components/views/ClubDetails";
+import MyEvents from "./components/views/MyEvents";
+import MyClubs from "./components/views/MyClubs";
+import MyInternships from "./components/views/MyInternships";
+
 
 export default function App() {
   const [appliedInternships, setAppliedInternships] = useState([]) //havent implemented backend for this yet, stored on frontend
@@ -63,13 +67,17 @@ export default function App() {
       <div className="hub-container">
         <RightSideBar />
         <Routes>
+          <Route path="/registeredEvents" element={<MyEvents registeredEvents={registeredEvents}/>}></Route>
+          <Route path="/savedInternships" element={<MyInternships savedInternships={savedInternships}/>}></Route>
+          <Route path="/joinedClubs" element={<MyClubs joinedClubs={joinedClubs}/>}></Route>
+
           <Route path="/clubs/:id" element={<ClubDetails joinedClubs={joinedClubs} setJoinedClubs={setJoinedClubs}/>}></Route>
           <Route path="/events/:id" element={<EventDetails registeredEvents={registeredEvents} setRegisteredEvents={setRegisteredEvents} />}></Route>
           <Route
             path="/internships/:id"
             element={<InternshipDetails savedInternships={savedInternships} setSavedInternships={setSavedInternships} appliedInternships={appliedInternships} setAppliedInternships={setAppliedInternships}/>}
           ></Route>
-          <Route path="/home" element={<HomePage />} />
+          <Route path="/home" element={<HomePage joinedClubs={joinedClubs} registeredEvents={registeredEvents} savedInternships={savedInternships}/>} />
           <Route path="/events" element={<EventPage data={EventData} />} />
           <Route path="/internships" element={<InternshipPage />} />
           <Route path="/clubs" element={<ClubPage />} />

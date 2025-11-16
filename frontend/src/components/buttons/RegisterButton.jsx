@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 
-export default function RegisterButton({ text, icon, onClick, event, setRegisteredEvents }) {
+export default function RegisterButton({ text, icon, event, setRegisteredEvents, isRegistered }) {
   const [showModal, setShowModal] = useState(false);
 
   const handleClick = () => {
+    if(isRegistered){
+      alert("you have already registered for this event")
+      return
+    }
     // 1. Open Google form
     window.open(
       "https://docs.google.com/forms/d/e/1FAIpQLSd1U2JKM5xornzoShJ9pI7mLpkS65YPXI4aL8sDkYj1v4dr2w/viewform?usp=dialog"
@@ -15,16 +19,16 @@ export default function RegisterButton({ text, icon, onClick, event, setRegister
 
   const handleYes = async () => {
     setShowModal(false);
+    setRegisteredEvents((prev)=>[...prev, event])
     try{
          await fetch("http://localhost:8000/myevents", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(event),
         })
-        setRegisteredEvents((prev)=>[...prev, event])
     }catch(e){
         console.error(`failed to register: ${e}`)
-        alert("failed to register")
+
     }
     // ⚠️ Here is where you call your backend if needed
   };
@@ -45,7 +49,7 @@ export default function RegisterButton({ text, icon, onClick, event, setRegister
       {showModal && (
         <div style={styles.backdrop}>
           <div style={styles.modal}>
-            <p>Have you applied?</p>
+            <p>Have you Registered?</p>
 
             <button style={styles.yes} onClick={handleYes}>
               Yes

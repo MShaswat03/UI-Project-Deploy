@@ -9,7 +9,7 @@ export default function BackButton({text}) {
         cursor: "pointer",
         fontSize: "14px",
       }}>
-      ← Back to {text}
+      ← Back {text}
     </button>
   );
 }

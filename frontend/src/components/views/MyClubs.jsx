@@ -17,8 +17,9 @@ export default function Myclubs({ joinedClubs }) {
   });
   return (
     <div className="grid-container">
-      <BackButton />
+      
       <div className="events-container">
+        <BackButton/>
         <h1>My clubs</h1>
         <div className="filter">
           <input

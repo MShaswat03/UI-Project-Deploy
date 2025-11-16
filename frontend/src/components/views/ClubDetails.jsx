@@ -3,6 +3,7 @@ import clubs from "../../assets/ClubData.json";
 import Image from "../cards/Image";
 import Button from "../buttons/ApplyButton";
 import JoinButton from "../buttons/JoinButton";
+import BackButton from "../buttons/BackButton";
 
 export default function ClubDetails({ joinedClubs, setJoinedClubs }) {
   const { id } = useParams();
@@ -43,6 +44,7 @@ export default function ClubDetails({ joinedClubs, setJoinedClubs }) {
   };
   return (
       <div className="details-container">
+        <BackButton/>
         <div className="header">
           <Image imgSrc={club.imgSrc} category={club.category} />
           <text>{club.organisation}</text>

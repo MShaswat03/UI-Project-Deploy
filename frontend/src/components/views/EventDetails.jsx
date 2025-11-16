@@ -3,14 +3,20 @@ import events from "../../assets/EventData.json";
 import Image from "../cards/Image";
 import RegisterButton from "../buttons/RegisterButton";
 import { useState } from "react";
+import BackButton from "../buttons/BackButton";
 
-export default function EventDetails({ registeredEvents, setRegisteredEvents }) {
+
+export default function EventDetails({
+  registeredEvents,
+  setRegisteredEvents,
+}) {
   const { id } = useParams();
   const event = events.find((event) => event.id == id);
   const isRegistered = registeredEvents.some((event) => event.id == id);
 
   return (
     <div className="details-container">
+      <BackButton/>
       <div className="header">
         <Image imgSrc={event.imgSrc} category={event.category} />
         <text>{event.organisation}</text>

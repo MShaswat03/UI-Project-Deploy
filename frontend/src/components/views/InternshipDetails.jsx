@@ -3,6 +3,7 @@ import Internships from "../../assets/InternshipData.json";
 import Image from "../cards/Image";
 import ApplyButton from "../buttons/ApplyButton";
 import SaveButton from "../buttons/SaveButton";
+import BackButton from "../buttons/BackButton";
 
 export default function InternshipDetails({
   savedInternships,
@@ -48,8 +49,9 @@ export default function InternshipDetails({
       saveInternship();
     }
   };
-  return (
-    <div className="details-container">
+  return (<>
+  <div className="details-container">
+      <BackButton/>   
       <div className="header">
         <Image imgSrc={internship.imgSrc} category={internship.category} />
         <text>{internship.organisation}</text>
@@ -117,5 +119,7 @@ export default function InternshipDetails({
         />
       </div>
     </div>
+  </>
+    
   );
 }

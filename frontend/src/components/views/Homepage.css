@@ -23,6 +23,7 @@
 }
 
 .events-container{
+    position: relative;
     display: flex;
     flex-direction: column;
     margin-inline: 50px;
@@ -242,6 +243,7 @@
 }
 
 .details-container{
+    position: relative;
     display: flex;
     width: 80%;
     flex-direction: column;
@@ -325,6 +327,19 @@
 
 .material-symbols-outlined{
     font-size: 18px;
+}
+
+#back-btn{
+    position: absolute;
+    font-size: large;
+    left: 80px;
+    background-color: rgb(255, 254, 254);
+    color: black;
+    box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, 0.393);
+}
+
+#back-btn:hover{
+    background-color:rgb(223, 223, 223) ;
 }
 
 #save-btn{

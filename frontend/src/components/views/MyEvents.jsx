@@ -1,6 +1,7 @@
 import EventCard from "../cards/EventCard";
 import { useState } from "react";
 import Eventtags from "../../assets/EventTags.json"
+import BackButton from "../buttons/BackButton";
 
 export default function MyEvents({ registeredEvents }) {
   const [selectedTag, setSelectedTag] = useState("");
@@ -17,6 +18,7 @@ export default function MyEvents({ registeredEvents }) {
   return (
     <div className="grid-container">
       <div className="events-container">
+        <BackButton/>
         <h1>My Events</h1>
         <div className="filter">
           <input

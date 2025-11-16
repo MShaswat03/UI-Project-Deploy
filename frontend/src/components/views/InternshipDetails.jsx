@@ -49,77 +49,79 @@ export default function InternshipDetails({
       saveInternship();
     }
   };
-  return (<>
-  <div className="details-container">
-      <BackButton/>   
-      <div className="header">
-        <Image imgSrc={internship.imgSrc} category={internship.category} />
-        <text>{internship.organisation}</text>
-        <h1>{internship.title}</h1>
-        <div className="footer"></div>
-      </div>
-
-      <div className="details">
-        <div className="about">
-          <h2>About this Opportunity</h2>
-          {internship.description}
+  return (
+    <>
+      <div className="details-container">
+        <div className="header">
+          <Image imgSrc={internship.imgSrc} category={internship.category} />
+          <text>{internship.organisation}</text>
+          <h1>{internship.title}</h1>
+          <div className="footer"></div>
         </div>
-        <div className="requirements">
-          <h2>Requirements</h2>
-          <ul>
-            {internship.requirements.map((req, index) => (
-              <li key={index}>{req}</li>
-            ))}
-          </ul>
-        </div>
-        <div className="company-info">
-          <h3>Company Information</h3>
-          <div className="info-wrapper">
-            <div className="info-item">
-              <span className="material-symbols-outlined">calendar_today</span>
-              <span>{internship.date}</span>
-            </div>
 
-            <div className="info-item">
-              <span className="material-symbols-outlined">
-                nest_clock_farsight_analog
-              </span>
-              <span>{internship.time}</span>
-            </div>
+        <div className="details">
+          <div className="about">
+            <h2>About this Opportunity</h2>
+            {internship.description}
+          </div>
+          <div className="requirements">
+            <h2>Requirements</h2>
+            <ul>
+              {internship.requirements.map((req, index) => (
+                <li key={index}>{req}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="company-info">
+            <h3>Company Information</h3>
+            <div className="info-wrapper">
+              <div className="info-item">
+                <span className="material-symbols-outlined">
+                  calendar_today
+                </span>
+                <span>{internship.date}</span>
+              </div>
 
-            <div className="info-item">
-              <span className="material-symbols-outlined">location_on</span>
-              <span>{internship.location}</span>
-            </div>
+              <div className="info-item">
+                <span className="material-symbols-outlined">
+                  nest_clock_farsight_analog
+                </span>
+                <span>{internship.time}</span>
+              </div>
 
-            <div className="info-item">
-              <span className="material-symbols-outlined">group</span>
-              <span>{internship.spots} spots</span>
-            </div>
+              <div className="info-item">
+                <span className="material-symbols-outlined">location_on</span>
+                <span>{internship.location}</span>
+              </div>
 
-            <div className="info-item">
-              <span className="material-symbols-outlined">local_atm</span>
-              <span>Salary {internship.salary}</span>
+              <div className="info-item">
+                <span className="material-symbols-outlined">group</span>
+                <span>{internship.spots} spots</span>
+              </div>
+
+              <div className="info-item">
+                <span className="material-symbols-outlined">local_atm</span>
+                <span>Salary {internship.salary}</span>
+              </div>
             </div>
           </div>
         </div>
+        <div className="button-row">
+          <BackButton />
+          <ApplyButton
+            text={isApplied ? "Applied" : "Apply"}
+            icon={isApplied ? "check_circle" : null}
+            internship={internship}
+            setAppliedInternships={setAppliedInternships}
+            isApplied={isApplied}
+          />
+          <SaveButton
+            text={isSaved ? "Saved" : "Save"}
+            icon={isSaved ? "check_circle" : null}
+            onClick={handleSaveToggle}
+          />
+        </div>
       </div>
-      <div className="button-row">
-        <ApplyButton
-          text={isApplied ? "Applied" : "Apply"}
-          icon={isApplied ? "check_circle" : null}
-          internship={internship}
-          setAppliedInternships={setAppliedInternships}
-          isApplied={isApplied}
-        />
-        <SaveButton
-          text={isSaved ? "Saved" : "Save"}
-          icon={isSaved ? "check_circle" : null}
-          onClick={handleSaveToggle}
-        />
-      </div>
-    </div>
-  </>
-    
+    </>
   );
 }

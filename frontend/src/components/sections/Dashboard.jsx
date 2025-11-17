@@ -4,6 +4,7 @@
 //       <h1>Welcome back, Name</h1>
 //       <p>Your gateway to campus activities, clubs, and opportunities.</p>
 
+<<<<<<< HEAD
 //       <div className="dashboard-cards">
 //         <div className="dashboard-card">
 //           <span className="material-symbols-outlined">padel</span>2 My Clubs
@@ -31,6 +32,7 @@
 import { useNavigate } from "react-router-dom";
  
 export default function Dashboard({ joinedClubs, registeredEvents, savedInternships, onEditInterests }) {
+
   const navigate = useNavigate();
  
   return (
@@ -55,5 +57,3 @@ export default function Dashboard({ joinedClubs, registeredEvents, savedInternsh
     </div>
   );
 }
- 
- 

@@ -3,14 +3,21 @@ import events from "../../assets/EventData.json";
 import Image from "../cards/Image";
 import RegisterButton from "../buttons/RegisterButton";
 import { useState } from "react";
+import BackButton from "../buttons/BackButton";
+import BreadCrumbs from "../bars/BreadCrumbs";
+import NavBar from "../bars/BackBar";
 
-export default function EventDetails({ registeredEvents, setRegisteredEvents }) {
+export default function EventDetails({
+  registeredEvents,
+  setRegisteredEvents,
+}) {
   const { id } = useParams();
   const event = events.find((event) => event.id == id);
   const isRegistered = registeredEvents.some((event) => event.id == id);
 
   return (
     <div className="details-container">
+      <NavBar />
       <div className="header">
         <Image imgSrc={event.imgSrc} category={event.category} />
         <text>{event.organisation}</text>
@@ -51,13 +58,17 @@ export default function EventDetails({ registeredEvents, setRegisteredEvents }) 
           </div>
         </div>
       </div>
-      <RegisterButton
-        text={isRegistered ? "Registered" : "Register"}
-        icon={isRegistered ? "check_circle" : null}
-        isRegistered={isRegistered}
-        event={event}
-        setRegisteredEvents={setRegisteredEvents}
-      />
+      <div>
+        <div className="button-row">
+          <RegisterButton
+            text={isRegistered ? "Registered" : "Register"}
+            icon={isRegistered ? "check_circle" : null}
+            isRegistered={isRegistered}
+            event={event}
+            setRegisteredEvents={setRegisteredEvents}
+          />
+        </div>
+      </div>
     </div>
   );
 }

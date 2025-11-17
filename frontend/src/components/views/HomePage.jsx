@@ -13,6 +13,7 @@ import ClubTags from "../../assets/ClubTags.json";
 import EventTags from "../../assets/EventTags.json";
 import InternshipTags from "../../assets/InternshipTags.json";
 import "./Homepage.css";
+import "./Mobile.css"
 
 const LS_INTERESTS_KEY = "campushub_interests";
 const LS_NEWS_FILTERS_KEY = "campushub_news_filters";

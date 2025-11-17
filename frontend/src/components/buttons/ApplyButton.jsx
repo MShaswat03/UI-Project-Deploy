@@ -77,7 +77,9 @@ const styles = {
     minWidth: "250px",
   },
   yes: {
-    margin: "10px",
+    width:"90%",
+    marginBlock: "20px",
+    marginInline: "10px",
     padding: "8px 16px",
     background: "green",
     color: "white",
@@ -85,6 +87,7 @@ const styles = {
     borderRadius: "5px",
   },
   no: {
+    width:"90%",
     margin: "10px",
     padding: "8px 16px",
     background: "red",

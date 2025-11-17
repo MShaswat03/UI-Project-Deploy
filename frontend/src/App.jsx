@@ -65,21 +65,23 @@ export default function App() {
         <RightSideBar />
 
         <Routes>
+          {/* main branch paths (source of truth) */}
           <Route
-            path="/registeredEvents"
+            path="/RegisteredEvents"
             element={<MyEvents registeredEvents={registeredEvents} />}
           ></Route>
 
           <Route
-            path="/savedInternships"
+            path="/SavedInternships"
             element={<MyInternships savedInternships={savedInternships} />}
           ></Route>
 
           <Route
-            path="/joinedClubs"
+            path="/MyClubs"
             element={<MyClubs joinedClubs={joinedClubs} />}
           ></Route>
 
+          {/* your extra routes */}
           <Route
             path="/clubs/:id"
             element={

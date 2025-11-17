@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 
-export default function RegisterButton({ text, icon, event, setRegisteredEvents, isRegistered }) {
+export default function RegisterButton({
+  text,
+  icon,
+  event,
+  setRegisteredEvents,
+  isRegistered,
+}) {
   const [showModal, setShowModal] = useState(false);
 
   const handleClick = () => {
-    if(isRegistered){
-      alert("you have already registered for this event")
-      return
+    if (isRegistered) {
+      alert("you have already registered for this event");
+      return;
     }
     // 1. Open Google form
     window.open(
@@ -19,16 +25,15 @@ export default function RegisterButton({ text, icon, event, setRegisteredEvents,
 
   const handleYes = async () => {
     setShowModal(false);
-    setRegisteredEvents((prev)=>[...prev, event])
-    try{
-         await fetch("http://localhost:8000/myevents", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(event),
-        })
-    }catch(e){
-        console.error(`failed to register: ${e}`)
-
+    setRegisteredEvents((prev) => [...prev, event]);
+    try {
+      await fetch("http://localhost:8000/myevents", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(event),
+      });
+    } catch (e) {
+      console.error(`failed to register: ${e}`);
     }
     // ⚠️ Here is where you call your backend if needed
   };
@@ -85,7 +90,9 @@ const styles = {
     minWidth: "250px",
   },
   yes: {
-    margin: "10px",
+    width: "90%",
+    marginBlock: "20px",
+    marginInline: "10px",
     padding: "8px 16px",
     background: "green",
     color: "white",
@@ -93,6 +100,7 @@ const styles = {
     borderRadius: "5px",
   },
   no: {
+    width: "90%",
     margin: "10px",
     padding: "8px 16px",
     background: "red",

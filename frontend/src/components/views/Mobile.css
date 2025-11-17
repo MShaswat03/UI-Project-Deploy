@@ -1,0 +1,242 @@
+/* ============================================ */
+/* MOBILE RESPONSIVE STYLES */
+/* ============================================ */
+
+@media (max-width: 768px) {
+  /* Events Container - Mobile */
+  .events-container {
+    margin-inline: 16px;
+    padding-bottom: 80px; /* Space for bottom nav */
+  }
+
+  .events-container h1 {
+    font-size: 24px;
+    margin-block: 16px;
+  }
+
+  .events-container .filter {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .events-container input {
+    width: 100%;
+    font-size: 16px;
+    height: 44px; /* Larger tap target */
+  }
+
+  .events-container select {
+    width: 100%;
+    height: 44px;
+    font-size: 16px;
+  }
+
+  /* Events Grid - Mobile */
+  .events-wrapper {
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: 16px;
+    margin-block: 20px;
+  }
+
+  .event-card {
+    min-width: 100%;
+    height: 400px;
+  }
+
+ 
+
+  .event-card:hover {
+    transform: none; /* Disable hover transform on mobile */
+  }
+
+  /* Details Container - Mobile */
+  .details-container {
+    width: 100%;
+    margin-inline: 0;
+    padding: 16px;
+    padding-bottom: 80px; /* Space for bottom nav */
+    gap: 24px;
+  }
+
+  .details-container img {
+    width: 100%;
+  }
+
+  .details-container .header {
+    width: 100%;
+  }
+
+  .details-container .details {
+    width: 100%;
+  }
+
+  .details-container .company-info .info-wrapper {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .details-container button {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  /* Navigation - Mobile */
+  .nav {
+    margin-block: 16px;
+    padding-inline: 16px;
+  }
+
+  .nav #back-btn {
+    position: relative;
+    font-size: 16px;
+    padding: 8px 12px;
+    height: 36px;
+  }
+
+  /* Dashboard - Mobile */
+  .dashboard-container {
+    margin-left: 0;
+    padding: 16px;
+    padding-bottom: 80px; /* Space for bottom nav */
+  }
+
+  .dashboard-cards {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .dashboard-cards .dashboard-card {
+    width: 100%;
+    height: 80px;
+  }
+
+  /* Button Row - Mobile */
+  .button-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .button-row button {
+    width: 100%;
+  }
+
+  #save-btn {
+    width: 100%;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 375px) {
+  .events-container {
+    margin-inline: 12px;
+  }
+
+  .events-container h1 {
+    font-size: 20px;
+  }
+
+  .event-card {
+    height: 400px;
+  }
+
+  .event-card .card-description {
+    font-size: 13px;
+  }
+
+  .details-container {
+    padding: 12px;
+  }
+
+  .material-symbols-outlined {
+    font-size: 16px;
+  }
+}
+
+/* Landscape mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .event-card {
+    height: 320px;
+  }
+
+  .events-wrapper {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns in landscape */
+  }
+}
+
+/* mobile navigation bar */
+
+@media (max-width: 768px) {
+  .hub-container {
+    flex-direction: column;
+    padding-bottom: 70px; /* Space for bottom nav */
+  }
+
+  .grid-container {
+    margin-inline: 20px; /* Smaller side margins on mobile */
+    margin-bottom: 70px; /* Space for bottom nav */
+  }
+
+  .right-side-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: auto;
+    height: auto;
+    width: 100%;
+    padding: 0;
+    border-left: none;
+    border-top: 2px solid rgba(128, 128, 128, 0.2);
+    background-color: white; /* Add background so content doesn't show through */
+    z-index: 1000;
+  }
+
+  .right-side-bar ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 8px 0;
+  }
+
+  .right-side-bar ul li {
+    margin-bottom: 0;
+    flex: 1;
+  }
+
+  .right-side-bar ul a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 4px;
+    font-size: 12px;
+    text-align: center;
+    gap: 4px;
+  }
+
+  /* Icon styles - add icons before text */
+  .right-side-bar ul a::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin-bottom: 2px;
+  }
+
+  /* You can replace these with actual icon classes or SVGs */
+  .right-side-bar ul a[href*="home"]::before {
+    content: '🏠';
+  }
+
+  .right-side-bar ul a[href*="internships"]::before {
+    content: '💼';
+  }
+
+  .right-side-bar ul a[href*="clubs"]::before {
+    content: '👥';
+  }
+
+  .right-side-bar ul a[href*="events"]::before {
+    content: '📅';
+  }
+}

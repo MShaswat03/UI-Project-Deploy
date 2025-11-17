@@ -3,6 +3,7 @@ import Dashboard from "../sections/Dashboard";
 import Recommended from "../sections/Recommended";
 
 import "./Homepage.css";
+import "./Mobile.css"
 
 
 export default function HomePage({joinedClubs, registeredEvents, savedInternships}) {

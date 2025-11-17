@@ -2,6 +2,8 @@ import ClubCard from "../cards/ClubCard";
 import { useState } from "react";
 import clubtags from "../../assets/ClubTags.json";
 import BackButton from "../buttons/BackButton";
+import BreadCrumbs from "../bars/BreadCrumbs";
+import NavBar from "../bars/NavBar";
 
 export default function Myclubs({ joinedClubs }) {
   const [selectedTag, setSelectedTag] = useState("");
@@ -19,7 +21,7 @@ export default function Myclubs({ joinedClubs }) {
     <div className="grid-container">
       
       <div className="events-container">
-        <BackButton/>
+        <NavBar/>
         <h1>My clubs</h1>
         <div className="filter">
           <input

@@ -67,9 +67,9 @@ export default function App() {
       <div className="hub-container">
         <RightSideBar />
         <Routes>
-          <Route path="/registeredEvents" element={<MyEvents registeredEvents={registeredEvents}/>}></Route>
-          <Route path="/savedInternships" element={<MyInternships savedInternships={savedInternships}/>}></Route>
-          <Route path="/joinedClubs" element={<MyClubs joinedClubs={joinedClubs}/>}></Route>
+          <Route path="/RegisteredEvents" element={<MyEvents registeredEvents={registeredEvents}/>}></Route>
+          <Route path="/SavedInternships" element={<MyInternships savedInternships={savedInternships}/>}></Route>
+          <Route path="/MyClubs" element={<MyClubs joinedClubs={joinedClubs}/>}></Route>
 
           <Route path="/clubs/:id" element={<ClubDetails joinedClubs={joinedClubs} setJoinedClubs={setJoinedClubs}/>}></Route>
           <Route path="/events/:id" element={<EventDetails registeredEvents={registeredEvents} setRegisteredEvents={setRegisteredEvents} />}></Route>

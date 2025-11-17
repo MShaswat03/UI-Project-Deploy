@@ -4,6 +4,8 @@ import Image from "../cards/Image";
 import RegisterButton from "../buttons/RegisterButton";
 import { useState } from "react";
 import BackButton from "../buttons/BackButton";
+import BreadCrumbs from "../bars/BreadCrumbs";
+import NavBar from "../bars/NavBar";
 
 export default function EventDetails({
   registeredEvents,
@@ -15,6 +17,7 @@ export default function EventDetails({
 
   return (
     <div className="details-container">
+      <NavBar/>
       <div className="header">
         <Image imgSrc={event.imgSrc} category={event.category} />
         <text>{event.organisation}</text>
@@ -57,7 +60,6 @@ export default function EventDetails({
       </div>
       <div>
         <div className="button-row">
-          <BackButton />
           <RegisterButton
             text={isRegistered ? "Registered" : "Register"}
             icon={isRegistered ? "check_circle" : null}

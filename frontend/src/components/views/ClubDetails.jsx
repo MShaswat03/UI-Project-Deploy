@@ -4,6 +4,8 @@ import Image from "../cards/Image";
 import Button from "../buttons/ApplyButton";
 import JoinButton from "../buttons/JoinButton";
 import BackButton from "../buttons/BackButton";
+import BreadCrumbs from "../bars/BreadCrumbs";
+import NavBar from "../bars/NavBar";
 
 export default function ClubDetails({ joinedClubs, setJoinedClubs }) {
   const { id } = useParams();
@@ -44,6 +46,7 @@ export default function ClubDetails({ joinedClubs, setJoinedClubs }) {
   };
   return (
     <div className="details-container">
+      <NavBar/>
       <div className="header">
         <Image imgSrc={club.imgSrc} category={club.category} />
         <text>{club.organisation}</text>
@@ -85,7 +88,6 @@ export default function ClubDetails({ joinedClubs, setJoinedClubs }) {
         </div>
       </div>
       <div className="button-row">
-        <BackButton />
         <JoinButton
           text={isJoined ? "Joined" : "Join"}
           icon={isJoined ? "check_circle" : null}

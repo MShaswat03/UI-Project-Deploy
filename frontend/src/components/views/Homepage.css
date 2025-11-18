@@ -62,7 +62,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  height: 380px;
+  height: 450px; 
   max-width: 800px;
   min-width: 240px;
   border: solid rgba(128, 128, 128, 0.2);
@@ -71,6 +71,7 @@
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
   transition: all 0.1s ease;
 }
+
 
 .event-card:hover {
   cursor: pointer;
@@ -427,9 +428,12 @@
 .my-clubs {
 }
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 8534231f30aff17985f89a02659f0a175cc6ba96
 .event-card .card-footer .card-location{
     display: flex;
     align-items: flex-end;
@@ -702,11 +706,6 @@
     color: #6b7280;
   }
   
-  .recommended-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
-  }
   
   .recommended-column h3 {
     margin-bottom: 8px;
@@ -727,7 +726,7 @@
   
   .recommended-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 1.5rem;
     margin-top: 1rem;
   }
@@ -920,3 +919,127 @@
     margin-bottom: 0.5rem;
   }
   
+
+  /* =========================================
+   MOBILE VIEW FIXES
+   =======================================*/
+
+   @media (max-width: 768px) {
+
+    /* Recommended section → force 1 column */
+    .recommended-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  
+    /* Make cards flexible instead of fixed height */
+    .event-card {
+      width: 100%;
+      min-width: 0;
+      height: auto;   /* VERY IMPORTANT */
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+  
+    /* Prevent footer overlap */
+    .event-card .card-footer,
+    .event-card .internship-card-footer {
+      position: static;
+      margin-top: 12px;
+      font-size: 12px;
+      line-height: 1.3;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+  
+    /* If you have location + spots in the same row → stack them */
+    .event-card .loc-spots {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+    }
+  
+    /* Make the tags wrap properly */
+    .event-card ul {
+      position: static;
+      margin-top: 8px;
+    }
+  
+    /* Reduce long text overflow — clamp to 3 lines */
+    .event-card .card-description {
+      font-size: 13px;
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;      /* show max 3 lines */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .news-detail-page {
+      padding: 40px 60px;
+    }
+    
+    .news-detail-card {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 32px 40px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    }
+    
+    .news-date {
+      font-size: 0.95rem;
+      color: #6b7280;
+      margin-bottom: 8px;
+    }
+    
+    .news-detail-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    
+    .news-detail-summary {
+      font-size: 1.1rem;
+      color: #4b5563;
+      margin-bottom: 24px;
+    }
+    
+    .news-about {
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top: 1px solid #e5e7eb;
+    }
+    
+    .news-about h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    
+    .news-about p {
+      line-height: 1.6;
+      color: #374151;
+    }
+    
+    .news-meta {
+      margin-top: 32px;
+    }
+    
+    .news-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    
+    .news-tag-chip {
+      background: #eef2ff;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: #374151;
+    }
+  }    

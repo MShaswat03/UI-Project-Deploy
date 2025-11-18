@@ -8,12 +8,17 @@ export default function Dashboard({ joinedClubs, registeredEvents, savedInternsh
     <div className="dashboard-container">
       <h1>Welcome back, Name</h1>
       <p>Your gateway to campus activities, clubs, and opportunities.</p>
+
       <div className="dashboard-cards">
         <div className="dashboard-card" onClick={() => navigate("/MyClubs")}>
           <span className="material-symbols-outlined">padel</span>
           <h2>{joinedClubs.length}</h2> My Clubs
         </div>
-        <div className="dashboard-card" onClick={() => navigate("/RegisteredEvents")}>
+
+        <div
+          className="dashboard-card"
+          onClick={() => navigate("/RegisteredEvents")}
+        >
           <span className="material-symbols-outlined">event</span>
           <h2>{registeredEvents.length}</h2> Registered Events
         </div>

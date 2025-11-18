@@ -1,65 +1,62 @@
-// src/components/sections/NewsFeed.jsx
+import { Link } from "react-router-dom";
 import NewsData from "../../assets/NewsData.json";
 
-function filterNewsByFilters(newsItems, selectedFilters) {
-  if (!selectedFilters || selectedFilters.length === 0) {
-    // No filters → show latest few items
-    return newsItems.slice(0, 6);
-  }
-
-  const lowerFilters = selectedFilters.map(f => f.toLowerCase());
-
-  // Map UI chips to keywords in type/tags
-  const filterMap = {
-    events: ["events", "event"],
-    internships: ["internships", "internship"],
-    clubs: ["clubs", "club"],
-    wellness: ["wellness", "mental health"],
-    academics: ["academics", "scholarships"],
-    volunteering: ["volunteering", "community", "teaching", "service"]
-  };
-
-  return newsItems.filter(item => {
-    const allKeywords = [
-      item.type?.toLowerCase() || "",
-      ...(item.tags || []).map(t => t.toLowerCase())
-    ];
-
-    // for each selected filter, check mapped keywords
-    return lowerFilters.some(filterLabel => {
-      const key = filterLabel.toLowerCase(); // "events", "internships", etc.
-      const mappedKeywords = filterMap[key] || [key];
-      return mappedKeywords.some(kw => allKeywords.includes(kw));
-    });
-  });
-}
-
 export default function NewsFeed({ selectedNewsFilters }) {
-  const filteredNews = filterNewsByFilters(NewsData, selectedNewsFilters);
+  // Normalize filters to lowercase (since data uses lowercase)
+  const activeFilters = selectedNewsFilters.map((f) => f.toLowerCase());
+
+  // If no filters selected → show ALL news
+  const filteredNews =
+    activeFilters.length === 0
+      ? NewsData
+      : NewsData.filter((item) => {
+          const typeKey = item.type.toLowerCase();          // "events", "clubs", ...
+          const tagKeys = item.tags.map((t) => t.toLowerCase()); // ["tech", "events", ...]
+
+          // match either on type OR on tags
+          return (
+            activeFilters.includes(typeKey) ||
+            tagKeys.some((tag) => activeFilters.includes(tag))
+          );
+        });
 
   return (
-    <section className="newsfeed-section">
+    <div className="newsfeed-section">
       <h2>Newsfeed</h2>
+
       {filteredNews.length === 0 ? (
-        <p>No news found for your selected filters yet.</p>
+        <p style={{ marginTop: "1rem", color: "#6b7280" }}>
+          No news items match your selected filters.
+        </p>
       ) : (
-        <div className="newsfeed-grid">
-          {filteredNews.map(item => (
-            <article key={item.id} className="news-card">
-              <p className="news-date">{item.date}</p>
-              <h3 className="news-title">{item.title}</h3>
-              <p className="news-summary">{item.summary}</p>
-              <div className="news-tags">
-                {(item.tags || []).slice(0, 4).map(tag => (
-                  <span key={tag} className="news-tag">
-                    {tag}
-                  </span>
-                ))}
+        <div className="news-cards">
+          {filteredNews.map((item) => (
+            <Link
+              key={item.id}
+              to={`/news/${item.id}`}
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <div className="news-card">
+                <div className="news-card-header">
+                  <span className="news-pill">{item.type}</span>
+                  <span className="news-date">{item.date}</span>
+                </div>
+
+                <h3 className="news-title">{item.title}</h3>
+                <p className="news-summary">{item.summary}</p>
+
+                <div className="news-tags">
+                  {item.tags.map((tag) => (
+                    <span key={tag} className="news-tag-chip">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
       )}
-    </section>
+    </div>
   );
 }

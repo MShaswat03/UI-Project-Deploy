@@ -2,6 +2,7 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./components/views/HomePage";
 import EventPage from "./components/views/EventPage";
+import NewsPage from "./components/views/NewsPage";
 import InternshipPage from "./components/views/InternshipPage";
 import ClubPage from "./components/views/ClubPage";
 import RightSideBar from "./components/bars/RightSideBar";
@@ -13,9 +14,11 @@ import ClubDetails from "./components/views/ClubDetails";
 import MyEvents from "./components/views/MyEvents";
 import MyClubs from "./components/views/MyClubs";
 import MyInternships from "./components/views/MyInternships";
+import NewsDetail from "./components/views/NewsDetail";
 
-// ✅ Add chatbot import (adjust path if your file is in a different folder)
+// ✅ Chatbot
 import Chatbot from "./components/chatbot/Chatbot";
+
 
 export default function App() {
   const [appliedInternships, setAppliedInternships] = useState([]);
@@ -64,7 +67,8 @@ export default function App() {
       <div className="hub-container">
         <RightSideBar />
 
-        <Routes>
+                <Routes>
+          {/* main branch paths */}
           <Route
             path="/RegisteredEvents"
             element={<MyEvents registeredEvents={registeredEvents} />}
@@ -76,8 +80,9 @@ export default function App() {
           <Route
             path="/MyClubs"
             element={<MyClubs joinedClubs={joinedClubs} />}
-          ></Route>
+          />
 
+          {/* details */}
           <Route
             path="/clubs/:id"
             element={
@@ -86,8 +91,7 @@ export default function App() {
                 setJoinedClubs={setJoinedClubs}
               />
             }
-          ></Route>
-
+          />
           <Route
             path="/events/:id"
             element={
@@ -96,8 +100,7 @@ export default function App() {
                 setRegisteredEvents={setRegisteredEvents}
               />
             }
-          ></Route>
-
+          />
           <Route
             path="/internships/:id"
             element={
@@ -108,8 +111,9 @@ export default function App() {
                 setAppliedInternships={setAppliedInternships}
               />
             }
-          ></Route>
+          />
 
+          {/* pages */}
           <Route
             path="/home"
             element={
@@ -120,11 +124,15 @@ export default function App() {
               />
             }
           />
-
           <Route path="/events" element={<EventPage data={EventData} />} />
           <Route path="/internships" element={<InternshipPage />} />
           <Route path="/clubs" element={<ClubPage />} />
+
+          {/* 📰 News */}
+          <Route path="/news" element={<NewsPage />} />
+          <Route path="/news/:id" element={<NewsDetail />} />
         </Routes>
+
 
         {/* ✅ Chatbot appears on all pages */}
         <Chatbot />

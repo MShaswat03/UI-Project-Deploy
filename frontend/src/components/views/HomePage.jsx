@@ -5,10 +5,6 @@ import Recommended from "../sections/Recommended";
 import Dashboard from "../sections/Dashboard";
 import PersonalizeInterests from "../sections/PersonalizeInterests";
 
-// newsletter feature
-import NewsPreferences from "../sections/NewsPreferences";
-import NewsFeed from "../sections/NewsFeed";
-
 import ClubTags from "../../assets/ClubTags.json";
 import EventTags from "../../assets/EventTags.json";
 import InternshipTags from "../../assets/InternshipTags.json";
@@ -28,17 +24,7 @@ export default function HomePage({ joinedClubs,registeredEvents, savedInternship
   // controls whether the personalise popup/banner is visible
   const [isPersonalizeOpen, setIsPersonalizeOpen] = useState(false);
 
-  // ----- newsletter filters for NewsFeed -----
-  const availableNewsFilters = [
-    "Events",
-    "Internships",
-    "Clubs",
-    "Wellness",
-    "Academics",
-    "Volunteering",
-  ];
-
-  const [selectedNewsFilters, setSelectedNewsFilters] = useState([]);
+  
 
   // 🔹 Load saved interests + news filters on first render
   useEffect(() => {
@@ -98,23 +84,6 @@ export default function HomePage({ joinedClubs,registeredEvents, savedInternship
     // localStorage.removeItem(LS_INTERESTS_KEY);
   }
 
-  // ----- handlers for newsletter filters -----
-  function handleToggleNewsFilter(filter) {
-    setSelectedNewsFilters((prev) => {
-      const next = prev.includes(filter)
-        ? prev.filter((f) => f !== filter)
-        : [...prev, filter];
-
-      localStorage.setItem(LS_NEWS_FILTERS_KEY, JSON.stringify(next));
-      return next;
-    });
-  }
-
-  function handleClearNewsFilters() {
-    setSelectedNewsFilters([]);
-    localStorage.removeItem(LS_NEWS_FILTERS_KEY);
-  }
-
   function handleOpenPersonalize() {
     setIsPersonalizeOpen(true);
   }
@@ -142,17 +111,6 @@ export default function HomePage({ joinedClubs,registeredEvents, savedInternship
         <Recommended selectedInterests={selectedInterests} />
       )}
 
-      {/* Newsletter Preferences + Newsfeed grouped together */}
-      <section className="news-section">
-        <NewsPreferences
-          availableFilters={availableNewsFilters}
-          selectedNewsFilters={selectedNewsFilters}
-          onToggleFilter={handleToggleNewsFilter}
-          onClearFilters={handleClearNewsFilters}
-        />
-
-        <NewsFeed selectedNewsFilters={selectedNewsFilters} />
-      </section>
     </div>
   );
 }

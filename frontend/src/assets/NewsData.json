@@ -1,67 +1,75 @@
 [
-    {
-      "id": "news_1",
-      "title": "Campus Hackathon Registration Opens",
-      "summary": "Sign up now for the 24-hour innovation hackathon organised by the Innovation Society.",
-      "date": "2025-03-01",
-      "type": "events",
-      "tags": ["tech", "hackathon", "competition", "coding", "events"]
-    },
-    {
-      "id": "news_2",
-      "title": "New Data Science Internship Posted",
-      "summary": "Insight Analytics is hiring a Data Science intern for Summer 2026.",
-      "date": "2026-03-05",
-      "type": "internships",
-      "tags": ["tech", "data", "AI", "machine learning", "internships"]
-    },
-    {
-      "id": "news_3",
-      "title": "Robotics Society Wins Regional Competition",
-      "summary": "The Robotics Society took 1st place at the regional robotics challenge last weekend.",
-      "date": "2026-02-26",
-      "type": "clubs",
-      "tags": ["robotics", "engineering", "clubs", "achievement"]
-    },
-    {
-      "id": "news_4",
-      "title": "Mental Health Awareness Week Announced",
-      "summary": "The Student Wellness Committee is launching a week of talks, workshops, and pop-up relaxation spaces.",
-      "date": "2026-03-10",
-      "type": "wellness",
-      "tags": ["wellness", "mental health", "events", "campus"]
-    },
-    {
-      "id": "news_5",
-      "title": "Photography Exhibition Call for Submissions",
-      "summary": "The Photography Club is accepting student submissions for the Spring exhibition.",
-      "date": "2026-03-08",
-      "type": "clubs",
-      "tags": ["photography", "arts", "clubs", "opportunities"]
-    },
-    {
-      "id": "news_6",
-      "title": "Scholarship Applications Now Open",
-      "summary": "Academic Affairs has opened applications for merit-based and need-based scholarships for AY2026/26.",
-      "date": "2026-03-03",
-      "type": "academics",
-      "tags": ["scholarships", "academics", "deadlines"]
-    },
-    {
-      "id": "news_7",
-      "title": "Women in STEM Panel: Registration Reminder",
-      "summary": "Don’t forget to register for the Women in STEM panel featuring industry leaders and alumni.",
-      "date": "2026-03-12",
-      "type": "events",
-      "tags": ["STEM", "diversity", "events", "education"]
-    },
-    {
-      "id": "news_8",
-      "title": "Community Tutoring Programme Needs Volunteers",
-      "summary": "Future Scholars Foundation is recruiting volunteers for weekend tutoring sessions.",
-      "date": "2026-03-06",
-      "type": "volunteering",
-      "tags": ["community", "teaching", "volunteering", "service"]
-    }
-  ]
-  
+      {
+        "id": "news_1",
+        "title": "Campus Hackathon Registration Opens",
+        "summary": "Sign up now for the 24-hour innovation hackathon organised by the Innovation Society.",
+        "date": "2025-03-01",
+        "type": "events",
+        "tags": ["tech", "hackathon", "competition", "coding", "events"],
+        "about": "Teams of up to four students will prototype solutions to real campus and industry challenges overnight. Mentors from tech companies will be on site to give feedback, and the top three teams will pitch to a judging panel for prizes and internship referrals."
+      },
+      {
+        "id": "news_2",
+        "title": "New Data Science Internship Posted",
+        "summary": "Insight Analytics is hiring a Data Science intern for Summer 2026.",
+        "date": "2026-03-05",
+        "type": "internships",
+        "tags": ["tech", "data", "AI", "machine learning", "internships"],
+        "about": "The internship focuses on building predictive models for real client datasets in retail and finance. Interns will work with a mentor data scientist, contribute to dashboards used by stakeholders, and attend weekly learning sessions on ML best practices."
+      },
+      {
+        "id": "news_3",
+        "title": "Robotics Society Wins Regional Competition",
+        "summary": "The Robotics Society took 1st place at the regional robotics challenge last weekend.",
+        "date": "2026-02-26",
+        "type": "clubs",
+        "tags": ["robotics", "engineering", "clubs", "achievement"],
+        "about": "The team’s autonomous rover completed the obstacle course in record time, using a custom vision pipeline and path-planning algorithm. The win secures funding for new lab equipment and opens up spots for juniors to join next year’s competition squad."
+      },
+      {
+        "id": "news_4",
+        "title": "Mental Health Awareness Week Announced",
+        "summary": "The Student Wellness Committee is launching a week of talks, workshops, and pop-up relaxation spaces.",
+        "date": "2026-03-10",
+        "type": "wellness",
+        "tags": ["wellness", "mental health", "events", "campus"],
+        "about": "Activities include daily mindfulness sessions, evening panel discussions with counsellors and alumni, and quiet drop-in spaces for students who just need a breather between classes. Most events are free and open to all years and programmes."
+      },
+      {
+        "id": "news_5",
+        "title": "Photography Exhibition Call for Submissions",
+        "summary": "The Photography Club is accepting student submissions for the Spring exhibition.",
+        "date": "2026-03-08",
+        "type": "clubs",
+        "tags": ["photography", "arts", "clubs", "opportunities"],
+        "about": "This year’s theme is “Everyday Campus Stories”. Both phone and camera shots are welcome, and selected works will be printed and displayed in the main atrium. Short artist statements will be featured alongside each piece."
+      },
+      {
+        "id": "news_6",
+        "title": "Scholarship Applications Now Open",
+        "summary": "Academic Affairs has opened applications for merit-based and need-based scholarships for AY2026/26.",
+        "date": "2026-03-03",
+        "type": "academics",
+        "tags": ["scholarships", "academics", "deadlines"],
+        "about": "Students can submit a single application to be considered for multiple internal and external awards. Shortlisted candidates may be invited for interviews, so applicants are encouraged to prepare a brief summary of their academic and co-curricular achievements."
+      },
+      {
+        "id": "news_7",
+        "title": "Women in STEM Panel: Registration Reminder",
+        "summary": "Don’t forget to register for the Women in STEM panel featuring industry leaders and alumni.",
+        "date": "2026-03-12",
+        "type": "events",
+        "tags": ["STEM", "diversity", "events", "education"],
+        "about": "The panel will cover career journeys, imposter syndrome, and practical advice on navigating male-dominated workplaces. There will be a Q&A segment and informal networking afterwards with light refreshments."
+      },
+      {
+        "id": "news_8",
+        "title": "Community Tutoring Programme Needs Volunteers",
+        "summary": "Future Scholars Foundation is recruiting volunteers for weekend tutoring sessions.",
+        "date": "2026-03-06",
+        "type": "volunteering",
+        "tags": ["community", "teaching", "volunteering", "service"],
+        "about": "Volunteers will support primary and secondary school students in maths, science, and language subjects. Training and materials are provided, and hours can be logged towards service-learning requirements or co-curricular records."
+      }
+    ]
+    

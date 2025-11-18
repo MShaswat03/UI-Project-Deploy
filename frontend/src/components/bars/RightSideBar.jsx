@@ -15,6 +15,9 @@ export default function RightSideBar() {
         <li className="menu-item">
           <Link to="/internships">Browse Internships</Link>
         </li>
+        <li className="menu-item">
+          <Link to="/news">Newsfeed</Link>
+        </li>
       </ul>
     </div>
   );

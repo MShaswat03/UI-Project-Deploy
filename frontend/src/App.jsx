@@ -17,7 +17,7 @@ import MyInternships from "./components/views/MyInternships";
 import NewsDetail from "./components/views/NewsDetail";
 
 // ✅ Chatbot
-import ChatBot from "./components/Chatbot/Chatbot";
+import ChatBot from "./components/Chatbot/ChatBot";
 
 
 export default function App() {

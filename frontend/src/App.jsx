@@ -17,7 +17,7 @@ import MyInternships from "./components/views/MyInternships";
 import NewsDetail from "./components/views/NewsDetail";
 
 // ✅ Chatbot
-import ChatBot from "./components/chatbot/Chatbot";
+import ChatBot from "./components/Chatbot/Chatbot";
 
 
 export default function App() {
@@ -135,7 +135,7 @@ export default function App() {
 
 
         {/* ✅ Chatbot appears on all pages */}
-        <Chatbot />
+        <ChatBot />
       </div>
     </>
   );
